@@ -1,13 +1,13 @@
-package ru.job4j;
+package ru.job4j.checkstyle;
 
-public class Checkstyle {
+public class Broken {
 
     public static final String NEWVALUE = "";
     private String surName;
     private String name;
     private int sizeOfEmpty = 10;
 
-    public Checkstyle() {
+    public Broken() {
     }
 
     public String getSurName() {
