@@ -58,7 +58,19 @@ public class StartUI {
                     } else {
                         System.out.println("заявка не найдена");
                     }
-                } else if (select == 6) {
+                } else if (select == 5) {
+                    System.out.println("=== Find item by id ===");
+                    System.out.println("enter name");
+                    Item[] items = tracker.findByName(scanner.nextLine());
+                    if (items.length > 0) {
+                        System.out.println("найденные заявки:");
+                        for(Item item : items) {
+                            System.out.println(item);
+                        }
+                    } else {
+                        System.out.println("заявки с таким именем отсутствуют");
+                    }
+                }else if (select == 6) {
                     run = false;
                 }
             }
