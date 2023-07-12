@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 public class ShowAllAction implements UserAction {
     @Override
     public String name() {
-        return "=== Show all items ===";
+        return "Show all items";
     }
 
     @Override
@@ -12,7 +12,6 @@ public class ShowAllAction implements UserAction {
         if (items.length == 0) {
             System.out.println("Storage is empty");
         } else {
-            System.out.println("=== Show all items ===");
             for (Item item : tracker.findAll()) {
                 System.out.println(item);
             }

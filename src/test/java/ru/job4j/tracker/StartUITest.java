@@ -14,7 +14,7 @@ class StartUITest {
         Output out = new ConsoleOutput();
         UserAction[] actions = {
                 new CreateAction(out),
-                new ExitAction()
+                new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findAll()[0].getName()).isEqualTo("Item name");
@@ -31,7 +31,7 @@ class StartUITest {
         );
         UserAction[] actions = {
                 new EditAction(out),
-                new ExitAction()
+                new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()).getName()).isEqualTo(replacedName);
@@ -47,7 +47,7 @@ class StartUITest {
         );
         UserAction[] actions = {
                 new DeleteAction(out),
-                new ExitAction()
+                new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId())).isNull();
