@@ -19,6 +19,7 @@ public class ShowAllAction implements UserAction {
         if (items.length == 0) {
             out.println("Storage is empty");
         } else {
+            out.println("Список всех заявок:");
             for (Item item : tracker.findAll()) {
                 out.println(item);
             }
