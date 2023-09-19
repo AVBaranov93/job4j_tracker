@@ -15,9 +15,9 @@ public class Tracker {
 
     private int indexOf(int id) {
         int rsl = -1;
-        for (Item item : items) {
-            if (item.getId() == id) {
-                rsl = items.indexOf(item);
+        for (int index = 0; index < items.size(); index++) {
+            if (id == items.get(index).getId()) {
+                rsl = index;
                 break;
             }
         }
@@ -25,7 +25,8 @@ public class Tracker {
     }
 
     public Item findById(int id) {
-        return indexOf(id)  == -1 ? null : items.get(indexOf(id));
+        int index = indexOf(id);
+        return index  == -1 ? null : items.get(index);
 
     }
 
