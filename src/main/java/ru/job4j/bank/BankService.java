@@ -1,6 +1,5 @@
 package ru.job4j.bank;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +9,7 @@ public class BankService {
     private final Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-        users.putIfAbsent(user, new ArrayList<Account>());
+        users.putIfAbsent(user, new ArrayList<>());
     }
 
     public void deleteUser(String passport) {
@@ -68,7 +67,18 @@ public class BankService {
                     && srcAccount.getBalance() >= amount) {
                 srcAccount.setBalance(srcAccount.getBalance() - amount);
                 destAccount.setBalance(destAccount.getBalance() + amount);
-
+                for (Account account : srcAccounts) {
+                    if (account.getRequisite().equals(srcAccount.getRequisite())) {
+                        account.setBalance(srcAccount.getBalance());
+                    }
+                }
+                for (Account account : destAccounts) {
+                    if (account.getRequisite().equals(destAccount.getRequisite())) {
+                        account.setBalance(destAccount.getBalance());
+                    }
+                }
+                users.put(srcUser, srcAccounts);
+                users.put(destUser, destAccounts);
                 rsl = true;
             }
         }

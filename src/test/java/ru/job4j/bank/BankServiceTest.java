@@ -62,7 +62,7 @@ public class BankServiceTest {
         assertThat(bank.getAccounts(user).size()).isEqualTo(1);
     }
 
-   /* @Test
+    @Test
     public void transferMoneyOk() {
         User user = new User("3434", "Petr Arsentev");
         BankService bank = new BankService();
@@ -104,5 +104,5 @@ public class BankServiceTest {
         bank.addAccount(user.getPassport(), new Account("113", 50D));
         bank.transferMoney(user.getPassport(), "5546", user.getPassport(), "1131", 150D);
         assertThat(bank.findByRequisite(user.getPassport(), "5546").getBalance()).isEqualTo(150D);
-    }*/
+    }
 }
