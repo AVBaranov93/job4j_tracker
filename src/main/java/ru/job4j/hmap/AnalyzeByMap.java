@@ -64,14 +64,7 @@ public class AnalyzeByMap {
         List<Label> labels = new ArrayList<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                String subj = subject.name();
-                Integer score = subject.score();
-                Integer oldScore = map.get(subj);
-                if (oldScore == null) {
-                    map.put(subj, score);
-                } else {
-                    map.put(subj, oldScore + score);
-                }
+                map.put(subject.name(), map.getOrDefault(subject.name(), 0) + subject.score());
             }
         }
         for (String key : map.keySet()) {
