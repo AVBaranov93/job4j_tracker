@@ -46,14 +46,14 @@ public class Item {
         this.name = name;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Item{"
                 + "id=" + id
                 + ", name='" + name + '\''
                 + ", created=" + created.format(FORMATTER)
                 + '}';
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
@@ -63,13 +63,19 @@ public class Item {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
+
         Item item = (Item) o;
-        return id == item.id && Objects.equals(name, item.name)
-                && Objects.equals(created, item.created);
+
+        if (id != item.id) {
+            return false;
+        }
+        return Objects.equals(name, item.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, created);
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
 }
