@@ -7,16 +7,18 @@ public class Departments {
         Set<String> tmp = new LinkedHashSet<>();
         for (String value : deps) {
             String start = "";
-            for (String el : value.split("/")) {
-                tmp.add(start + "/" + el);
-                start = start + "/" + el;
+            String[] rsl = value.split("/");
+            for (int i = 0; i < rsl.length; i++) {
+                if (i == 0) {
+                    tmp.add(rsl[i]);
+                    start = rsl[i];
+                } else {
+                    start = start + "/" + rsl[i];
+                    tmp.add(start);
+                }
             }
         }
-        List<String> rsl = new ArrayList<>();
-        for (String str : tmp) {
-            rsl.add(str.substring(1));
-        }
-        return rsl;
+        return new ArrayList<>(tmp);
     }
 
     public static void sortAsc(List<String> orgs) {
