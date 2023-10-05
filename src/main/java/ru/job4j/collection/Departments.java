@@ -7,15 +7,9 @@ public class Departments {
         Set<String> tmp = new LinkedHashSet<>();
         for (String value : deps) {
             String start = "";
-            String[] rsl = value.split("/");
-            for (int i = 0; i < rsl.length; i++) {
-                if (i == 0) {
-                    tmp.add(rsl[i]);
-                    start = rsl[i];
-                } else {
-                    start = start + "/" + rsl[i];
-                    tmp.add(start);
-                }
+            for (String el : value.split("/")) {
+                start = start.isEmpty() ? start + el : start + "/" + el;
+                tmp.add(start);
             }
         }
         return new ArrayList<>(tmp);
