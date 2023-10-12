@@ -37,7 +37,8 @@ public class AnalyzeByMap {
         for (Pupil pupil : pupils) {
             count++;
             for (Subject subject : pupil.subjects()) {
-                map.put(subject.name(), map.getOrDefault(subject.name(), 0) + subject.score());
+                map.merge(subject.name(), subject.score(), (k, v) ->
+                        map.get(subject.name()) + subject.score());
             }
         }
         for (String key : map.keySet()) {
