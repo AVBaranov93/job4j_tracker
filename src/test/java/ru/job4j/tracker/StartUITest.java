@@ -15,7 +15,7 @@ class StartUITest {
         Input in = new StubInput(
                 Arrays.asList("0", "Item name", "1")
         );
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Output out = new ConsoleOutput();
         List<UserAction> actions = Arrays.asList(
                 new CreateAction(out),
@@ -27,7 +27,7 @@ class StartUITest {
 
     @Test
     public void whenReplaceItem() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Output out = new ConsoleOutput();
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
@@ -44,7 +44,7 @@ class StartUITest {
 
     @Test
     public void whenDeleteItem() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Output out = new ConsoleOutput();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(
@@ -61,7 +61,7 @@ class StartUITest {
     @Test
     public void whenReplaceItemTestOutputIsSuccessfully() {
         Output out = new StubOut();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         Input in = new StubInput(
@@ -88,7 +88,7 @@ class StartUITest {
 
     @Test
     void whenFindItemByName() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("New Item"));
         Output out = new StubOut();
         List<UserAction> actions = Arrays.asList(new FindByNameAction(out), new ExitAction(out));
@@ -111,7 +111,7 @@ class StartUITest {
 
     @Test
     void whenFindItemById() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("New Item"));
         Output out = new StubOut();
         List<UserAction> actions = Arrays.asList(new FindByIdAction(out), new ExitAction(out));
@@ -133,7 +133,7 @@ class StartUITest {
 
     @Test
     void whenShowAllItems() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item one = new Item("one");
         Item two = new Item("two");
         tracker.add(one);
@@ -162,7 +162,7 @@ class StartUITest {
     public void whenInvalidExit() {
         Output out = new StubOut();
         Input in = new StubInput(Arrays.asList("22", "0"));
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         List<UserAction> actions = Collections.singletonList(
                 new ExitAction(out)
         );
@@ -228,7 +228,7 @@ class StartUITest {
 
     @Test
     void whenMenuItemIsNotNumber() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Output out = new StubOut();
         List<String> answers = Arrays.asList("zero", "0");
         Input input = new ValidateInput(out, new StubInput(answers));
