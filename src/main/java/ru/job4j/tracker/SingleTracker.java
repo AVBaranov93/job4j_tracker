@@ -18,7 +18,7 @@ public final class SingleTracker {
     }
 
     public Item add(Item item) {
-       return this.tracker.add(item);
+        return this.tracker.add(item);
     }
 
     public Item findById(int id) {
@@ -37,7 +37,7 @@ public final class SingleTracker {
         return this.tracker.replace(id, item);
     }
 
-    public boolean delete(int id) {
-        return this.tracker.delete(id);
+    public void delete(int id) {
+        this.tracker.delete(id);
     }
 }
