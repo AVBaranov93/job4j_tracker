@@ -8,7 +8,6 @@ import java.util.Properties;
 
 public class SqlTracker implements Store {
     private Connection connection;
-    private boolean isDeleted = false;
 
     public SqlTracker() {
         init();
@@ -16,10 +15,6 @@ public class SqlTracker implements Store {
 
     public SqlTracker(Connection connection) {
         this.connection = connection;
-    }
-
-    public boolean isDeleted() {
-        return isDeleted;
     }
 
     private void init() {
@@ -83,7 +78,7 @@ public class SqlTracker implements Store {
         try (PreparedStatement statement = connection.prepareStatement(
                 "DELETE FROM items WHERE id = ?")) {
             statement.setInt(1, id);
-            isDeleted = statement.executeUpdate() != 0;
+            statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }

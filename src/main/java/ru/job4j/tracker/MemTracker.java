@@ -7,12 +7,6 @@ public class MemTracker implements Store {
     private final List<Item> items = new ArrayList<>();
     private int itemId = 1;
 
-    private boolean isDeleted = false;
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
     @Override
     public Item add(Item item) {
         item.setId(itemId++);
@@ -68,8 +62,7 @@ public class MemTracker implements Store {
     @Override
     public void delete(int id) {
         int index = indexOf(id);
-        isDeleted = index != -1;
-        if (isDeleted) {
+        if (index != -1) {
             items.remove(index);
         }
     }
